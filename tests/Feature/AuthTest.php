@@ -27,6 +27,13 @@ class AuthTest extends TestCase
             'email' => $user->email,
         ]);
     }
+
+    public function test_login_redirection()
+    {
+        $response = $this->get('/api/user');
+
+        $response->assertRedirect('login');
+    }
     
     public function test_register_redirection()
     {
