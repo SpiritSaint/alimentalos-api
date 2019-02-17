@@ -34,6 +34,13 @@ class AuthTest extends TestCase
 
         $response->assertRedirect('login');
     }
+
+    public function test_reset_password_constructor()
+    {
+        $response = $this->get('/password/reset');
+
+        $response->assertOk();
+    }
     
     public function test_register_redirection()
     {
