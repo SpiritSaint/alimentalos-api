@@ -27,7 +27,28 @@ class AuthTest extends TestCase
             'email' => $user->email,
         ]);
     }
-    
+
+    public function test_login_redirection()
+    {
+        $response = $this->get('/api/user');
+
+        $response->assertRedirect('login');
+    }
+
+    public function test_reset_password_constructor()
+    {
+        $response = $this->get('/password/reset');
+
+        $response->assertOk();
+    }
+
+    public function test_verification_constructor()
+    {
+        $response = $this->get('/email/resend');
+
+        $response->assertRedirect('login');
+    }
+
     public function test_register_redirection()
     {
         $user = factory(User::class)->make();
