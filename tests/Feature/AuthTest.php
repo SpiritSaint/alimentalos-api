@@ -41,7 +41,14 @@ class AuthTest extends TestCase
 
         $response->assertOk();
     }
-    
+
+    public function test_verification_constructor()
+    {
+        $response = $this->get('/email/resend');
+
+        $response->assertRedirect('login');
+    }
+
     public function test_register_redirection()
     {
         $user = factory(User::class)->make();
