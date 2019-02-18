@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::get('/places', ['uses' => 'Api\PlacesController@index']);
+    Route::post('/places', ['uses' => 'Api\PlacesController@store']);
+    Route::get('/places/{place}', ['uses' => 'Api\PlacesController@show']);
+    Route::match(['PUT', 'PATCH'], '/places/{place}', ['uses' => 'Api\PlacesController@update']);
+    Route::delete('/places/{place}', ['uses' => 'Api\PlacesController@destroy']);
+});
