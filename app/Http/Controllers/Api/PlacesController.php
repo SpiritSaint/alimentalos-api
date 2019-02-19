@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Places\DestroyRequest;
+use App\Http\Requests\Places\IndexRequest;
+use App\Http\Requests\Places\ShowRequest;
+use App\Http\Requests\Places\StoreRequest;
+use App\Http\Requests\Places\UpdateRequest;
 use App\Place;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,13 +20,13 @@ class PlacesController extends Controller
         $this->places = $places;
     }
 
-    public function index()
+    public function index(IndexRequest $request)
     {
         $places = $this->places->all();
         return response()->json($places);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $place = Place::create($request->only([
             'name',
@@ -32,12 +37,12 @@ class PlacesController extends Controller
         return response()->json($place, 201);
     }
 
-    public function show(Place $place)
+    public function show(Place $place, ShowRequest $request)
     {
         return response()->json($place, 200);
     }
 
-    public function update(Place $place, Request $request)
+    public function update(Place $place, UpdateRequest $request)
     {
         $place->update($request->only([
             'name',
@@ -48,7 +53,7 @@ class PlacesController extends Controller
         return response()->json($place, 200);
     }
 
-    public function destroy(Place $place)
+    public function destroy(Place $place, DestroyRequest $request)
     {
         $place->delete();
 

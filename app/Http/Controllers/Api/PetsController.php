@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Pets\DestroyRequest;
+use App\Http\Requests\Pets\IndexRequest;
+use App\Http\Requests\Pets\ShowRequest;
+use App\Http\Requests\Pets\StoreRequest;
+use App\Http\Requests\Pets\UpdateRequest;
 use App\Pet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,13 +20,13 @@ class PetsController extends Controller
         $this->pets = $pets;
     }
 
-    public function index()
+    public function index(IndexRequest $request)
     {
         $pets = $this->pets->all();
         return response()->json($pets);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $pet = Pet::create($request->only([
             'name',
@@ -31,12 +36,12 @@ class PetsController extends Controller
         return response()->json($pet, 201);
     }
 
-    public function show(Pet $pet)
+    public function show(Pet $pet, ShowRequest $request)
     {
         return response()->json($pet, 200);
     }
 
-    public function update(Pet $pet, Request $request)
+    public function update(Pet $pet, UpdateRequest $request)
     {
         $pet->update($request->only([
             'name',
@@ -46,7 +51,7 @@ class PetsController extends Controller
         return response()->json($pet, 200);
     }
 
-    public function destroy(Pet $pet)
+    public function destroy(Pet $pet, DestroyRequest $request)
     {
         $pet->delete();
 
