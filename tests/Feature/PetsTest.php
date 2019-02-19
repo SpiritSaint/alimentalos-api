@@ -14,7 +14,7 @@ class PetsTest extends TestCase
 
     public function test_api_pets_index_route()
     {
-        $user = factory(User::class)->make();
+        $user = factory(User::class)->create();
 
         $this->actingAs($user, 'api')
             ->get('/api/pets')
@@ -23,7 +23,7 @@ class PetsTest extends TestCase
 
     public function test_api_pets_store_route()
     {
-        $user = factory(User::class)->make();
+        $user = factory(User::class)->create();
 
         $this->actingAs($user, 'api')
             ->post('/api/pets', [
@@ -36,12 +36,15 @@ class PetsTest extends TestCase
                 'created_at',
                 'updated_at',
             ])
+            ->assertJsonFragment([
+                'user_id' => $user->id,
+            ])
             ->assertStatus(201);
     }
 
     public function test_api_pets_show_route()
     {
-        $user = factory(User::class)->make();
+        $user = factory(User::class)->create();
 
         $pet = factory(Pet::class)->create();
 
@@ -50,6 +53,7 @@ class PetsTest extends TestCase
             ->assertJsonStructure([
                 'name',
                 'born_at',
+                'user_id',
                 'created_at',
                 'updated_at',
             ])
@@ -69,6 +73,7 @@ class PetsTest extends TestCase
             ->assertJsonStructure([
                 'name',
                 'born_at',
+                'user_id',
                 'created_at',
                 'updated_at',
             ])
@@ -77,7 +82,7 @@ class PetsTest extends TestCase
 
     public function test_api_pets_delete_route()
     {
-        $user = factory(User::class)->make();
+        $user = factory(User::class)->create();
 
         $pet = factory(Pet::class)->create();
 

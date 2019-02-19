@@ -9,5 +9,6 @@ class Pet extends Model
     protected $fillable = [
         'name',
         'born_at',
+        'user_id',
     ];
 }

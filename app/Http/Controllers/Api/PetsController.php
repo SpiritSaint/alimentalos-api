@@ -28,6 +28,8 @@ class PetsController extends Controller
             'born_at',
         ]));
 
+        $pet->user_id = auth('api')->user()->id;
+
         return response()->json($pet, 201);
     }
 
