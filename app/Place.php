@@ -11,6 +11,11 @@ use Illuminate\Database\Eloquent\Model;
 class Place extends Model
 {
     /**
+     * @var array 
+     */
+    protected $with = ['photos'];
+
+    /**
      * @var array
      */
     protected $fillable = [
@@ -19,6 +24,9 @@ class Place extends Model
         'longitude',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function photos()
     {
         return $this->belongsToMany('App\Photo')
