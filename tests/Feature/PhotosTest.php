@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Pet;
 use App\Photo;
+use App\Place;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -38,15 +40,37 @@ class PhotosTest extends TestCase
     {
         $user = factory(User::class)->make();
 
-        $place = factory(Photo::class)->create();
+        $photo = factory(Photo::class)->create();
 
         $this->actingAs($user, 'api')
-            ->get('/api/photos/' . $place->id)
+            ->get('/api/photos/' . $photo->id)
             ->assertJsonStructure([
                 'url',
                 'created_at',
                 'updated_at',
             ])
+            ->assertStatus(200);
+    }
+
+    public function test_api_pet_photos_index_route()
+    {
+        $user = factory(User::class)->make();
+
+        $pet = factory(Pet::class)->create();
+
+        $this->actingAs($user, 'api')
+            ->get('/api/pets/' . $pet->id . '/photos')
+            ->assertStatus(200);
+    }
+
+    public function test_api_place_photos_index_route()
+    {
+        $user = factory(User::class)->make();
+
+        $place = factory(Place::class)->create();
+
+        $this->actingAs($user, 'api')
+            ->get('/api/places/' . $place->id . '/photos')
             ->assertStatus(200);
     }
 
