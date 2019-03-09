@@ -12,6 +12,7 @@ class PhotoRepository
      */
     public static function upload(Request $request)
     {
+        // TODO - Implementar lògica de almacenamiento en nube
         return "URL";
     }
 }

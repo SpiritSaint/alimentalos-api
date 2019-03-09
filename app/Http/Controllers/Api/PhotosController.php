@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Api\Photos\DestroyRequest;
 use App\Http\Requests\Api\Photos\IndexRequest;
 use App\Http\Requests\Api\Photos\StoreRequest;
 use App\Http\Requests\Api\Places\ShowRequest;
@@ -45,5 +46,12 @@ class PhotosController extends Controller
     public function show(Photo $photo, ShowRequest $request)
     {
         return response()->json($photo, 200);
+    }
+
+    public function destroy(Photo $photo, DestroyRequest $request)
+    {
+        $photo->delete();
+
+        return response()->json([], 200);
     }
 }

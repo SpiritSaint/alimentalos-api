@@ -29,4 +29,9 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/pets/{pet}', ['uses' => 'Api\PetsController@show']);
     Route::match(['PUT', 'PATCH'], '/pets/{pet}', ['uses' => 'Api\PetsController@update']);
     Route::delete('/pets/{pet}', ['uses' => 'Api\PetsController@destroy']);
+
+    Route::get('/photos', ['uses' => 'Api\PhotosController@index']);
+    Route::post('/photos', ['uses' => 'Api\PhotosController@store']);
+    Route::get('/photos/{photo}', ['uses' => 'Api\PhotosController@show']);
+    Route::delete('/photos/{photo}', ['uses' => 'Api\PhotosController@destroy']);
 });
