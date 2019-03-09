@@ -23,12 +23,14 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::get('/places/{place}', ['uses' => 'Api\PlacesController@show']);
     Route::match(['PUT', 'PATCH'], '/places/{place}', ['uses' => 'Api\PlacesController@update']);
     Route::delete('/places/{place}', ['uses' => 'Api\PlacesController@destroy']);
+    Route::get('/places/{place}/photos', ['uses' => 'Api\PlacePhotosController@index']);
 
     Route::get('/pets', ['uses' => 'Api\PetsController@index']);
     Route::post('/pets', ['uses' => 'Api\PetsController@store']);
     Route::get('/pets/{pet}', ['uses' => 'Api\PetsController@show']);
     Route::match(['PUT', 'PATCH'], '/pets/{pet}', ['uses' => 'Api\PetsController@update']);
     Route::delete('/pets/{pet}', ['uses' => 'Api\PetsController@destroy']);
+    Route::get('/pets/{pet}/photos', ['uses' => 'Api\PetPhotosController@index']);
 
     Route::get('/photos', ['uses' => 'Api\PhotosController@index']);
     Route::post('/photos', ['uses' => 'Api\PhotosController@store']);
