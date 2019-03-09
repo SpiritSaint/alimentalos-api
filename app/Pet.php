@@ -18,4 +18,10 @@ class Pet extends Model
         'born_at',
         'user_id',
     ];
+
+    public function photos()
+    {
+        return $this->belongsToMany('App\Photo')
+            ->withTimestamps();
+    }
 }

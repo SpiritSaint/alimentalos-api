@@ -18,4 +18,10 @@ class Place extends Model
         'latitude',
         'longitude',
     ];
+
+    public function photos()
+    {
+        return $this->belongsToMany('App\Photo')
+            ->withTimestamps();
+    }
 }
