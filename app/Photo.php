@@ -5,17 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Pet
+ * Class Photo
  * @package App
  */
-class Pet extends Model
+class Photo extends Model
 {
     /**
      * @var array
      */
     protected $fillable = [
-        'name',
-        'born_at',
-        'user_id',
+        'url',
     ];
 }

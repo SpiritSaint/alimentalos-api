@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\Pets\DestroyRequest;
-use App\Http\Requests\Pets\IndexRequest;
-use App\Http\Requests\Pets\ShowRequest;
-use App\Http\Requests\Pets\StoreRequest;
-use App\Http\Requests\Pets\UpdateRequest;
+use App\Http\Requests\Api\Pets\DestroyRequest;
+use App\Http\Requests\Api\Pets\IndexRequest;
+use App\Http\Requests\Api\Pets\ShowRequest;
+use App\Http\Requests\Api\Pets\StoreRequest;
+use App\Http\Requests\Api\Pets\UpdateRequest;
 use App\Pet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

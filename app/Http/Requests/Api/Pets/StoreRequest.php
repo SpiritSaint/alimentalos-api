@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Places;
+namespace App\Http\Requests\Api\Pets;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestroyRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,8 @@ class DestroyRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'born_at' => 'required',
         ];
     }
 }

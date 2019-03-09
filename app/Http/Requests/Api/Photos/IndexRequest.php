@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Pets;
+namespace App\Http\Requests\Api\Photos;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class IndexRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**

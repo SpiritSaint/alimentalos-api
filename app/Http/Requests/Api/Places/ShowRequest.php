@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Places;
+namespace App\Http\Requests\Api\Places;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexRequest extends FormRequest
+class ShowRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

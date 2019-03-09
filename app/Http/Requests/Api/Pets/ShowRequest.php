@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Places;
+namespace App\Http\Requests\Api\Pets;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class ShowRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            //
         ];
     }
 }

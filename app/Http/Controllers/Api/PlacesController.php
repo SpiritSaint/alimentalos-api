@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Requests\Places\DestroyRequest;
-use App\Http\Requests\Places\IndexRequest;
-use App\Http\Requests\Places\ShowRequest;
-use App\Http\Requests\Places\StoreRequest;
-use App\Http\Requests\Places\UpdateRequest;
+use App\Http\Requests\Api\Places\DestroyRequest;
+use App\Http\Requests\Api\Places\IndexRequest;
+use App\Http\Requests\Api\Places\ShowRequest;
+use App\Http\Requests\Api\Places\StoreRequest;
+use App\Http\Requests\Api\Places\UpdateRequest;
 use App\Place;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
