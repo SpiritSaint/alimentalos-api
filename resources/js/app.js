@@ -5,9 +5,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+// require('./bootstrap');
 
 window.Vue = require('vue');
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify);
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,5 +32,19 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: () => {
+        return {
+            drawer: false,
+            drawerRight: false,
+            right: false,
+            left: false
+        }
+    },
+    methods: {
+        logout: () => {
+            event.preventDefault();
+            document.getElementById('logout-form').submit()
+        }
+    }
 });
